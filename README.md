@@ -7,3 +7,5 @@ Actually this is more an RS232 over spaghetti. But using the SLIP protocol and t
 
 The whole chain looks like this:
 SLIP(Linux) -> FTDI (USB<->RS232) -> ATMega328P -> Relais -> Spaghetti -> Optical Sensor -> ATMega328P -> FTDI (USB<->RS232) -> SLIP(Linux)
+
+![Alt text](doc/10_Ping.png?raw=true "Title")
