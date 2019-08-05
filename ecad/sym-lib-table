@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name ATMega328)(type Legacy)(uri ${KIPRJMOD}/lib/ATMega328.lib)(options "")(descr ""))
+  (lib (name IPoS-rescue)(type Legacy)(uri ${KIPRJMOD}/IPoS-rescue.lib)(options "")(descr ""))
+)
