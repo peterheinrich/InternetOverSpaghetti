@@ -44,7 +44,7 @@ void setup() {
   // Assert RTS to accept incomming bytes
   digitalWrite(RTS,LOW);
   
-  // Initialize 1ms timer interupt and register isr
+  // Initialize 2.5ms timer interupt and register isr
   Timer1.initialize(2500);
   Timer1.attachInterrupt(isr_timer);
 
@@ -75,7 +75,7 @@ void isr_timer() {
       digitalWrite(RTS,LOW);
   }
 
-  // A single bit is exactly 10ms long. Thus, we switch states every 10 timer ticks.
+  // A single bit is exactly 25ms long. Thus, we switch states every 10 timer ticks.
   if(tick % 10 == 0) {
     switch(tx_state) {
       case 0:
@@ -121,7 +121,7 @@ void isr_timer() {
   /* *** RECEIVE                                                        *** */
   /* ********************************************************************** */
   
-  // We scan for the start bit on any tick (1KHz)
+  // We scan for the start bit on any tick (400Hz)
   if(rx_state == 0) {
     if(digitalRead(SPAGHETTI_RX)) {
 
@@ -134,7 +134,7 @@ void isr_timer() {
       rx_state = 1;
       rx_byte = 0x0;
       rx_bit = 0;
-      // We store the offset to the 100Hz bit cycle and add some margin to scan for the next bits roughly in the middle of their heigh period.
+      // We store the offset to the 25ms bit cycle and add some margin to scan for the next bits roughly in the middle of their heigh period.
       rx_tick_offset = ((tick + 6) % 10);  
     }
   }
